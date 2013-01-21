@@ -65,8 +65,42 @@ public class BSON {
     	script, scope, selector, document, getmore, insert, cursor, kill_cursors, request, query, message, update, update_doc
        
     }
+    
+    
+    
     static enum AttributeNames {
-    	flags, db, document, collection, cursor_id, number_to_return, opcode, request_id, response_to, client_ip, client_port, _double, string, objectId, _boolean, dateTime, binary, array, _null, javascript, javascript_s, int32, timestamp, int64, min_key, max_key, number_to_skip, subtype, pattern, options, type, regex ,
+    	flags(), 
+    	db, 
+    	document, 
+    	collection, 
+    	cursor_id, 
+    	number_to_return, 
+    	opcode, 
+    	request_id, 
+    	response_to, 
+    	client_ip, 
+    	client_port, 
+    	_double, 
+    	string, 
+    	objectId
+    	, _boolean, 
+    	dateTime, 
+    	binary, 
+    	array, 
+    	_null, 
+    	javascript, 
+    	javascript_s, 
+    	int32, 
+    	timestamp, 
+    	int64, 
+    	min_key, 
+    	max_key, 
+    	number_to_skip, 
+    	subtype, 
+    	pattern, 
+    	options, 
+    	type, 
+    	regex ,
     	
     }
     
@@ -219,84 +253,6 @@ public class BSON {
 		
 		
 	}
-	// Simplified compatible versions of xdmp:encode-for-NCName and xdmp:decode-from-NCName
-	static String encodeForNCName( String name )
-	{
-		StringBuffer sb = new StringBuffer( name.length() * 2 );
-		char[] chars = name.toCharArray();
-		
-		boolean bFirst = true ;
-		boolean escaped = false ;
-		for( char ch : chars ){
-			if( ch == '_') {
-				sb.append("__");
-				escaped = true ;
-			} 
-			else 
-			if( ch  == ':' || 
-				(bFirst? !isInitialNameChar(ch) : 
-				!isNameChar(ch))){
-				  sb.append('_');
-			      toHexChar( ch , sb );
-				  sb.append('_');
-			      escaped = true;
-
-			}
-		    else
-			     sb.append(ch);
-		}
-		if( sb.length() == 0 )
-			  sb.append('_');
-		else
-		if( ! escaped ) 
-			return name; 
-
-		return sb.toString();
-		
-	}
-	
-	static String decodeFromNCName( String name )
-	{
-
-		  StringBuffer sb = new StringBuffer( name.length() * 2 );
-		  boolean escaped = false;
-
-          char chars[] = name.toCharArray() ;
-
- 		  for( int i = 0 ; i < chars.length ; i++ )
- 		  {
- 			char ch = chars[i];
- 			
-		    if( ch == '_' ){
-		      escaped = true ;
-		      char c = 0;
-		     
-		 
-		      while( ++i < chars.length-1 ){
-		    	if( chars[i] == '_' ){
-		    		break ;
-		    	}
-			    c <<= 8;
-		    	c |= fromHexChars( chars , i );
-		    	i +=2 ;
-	
-
-		      } 
-
-		      if( c == 0 )
-		        sb.append('_');
-		      else
-		        sb.append( c );
-
-
-
-		    } else  
-		    	sb.append(ch);
- 		  }
- 		  if( ! escaped )
- 			  return name ;
- 		  return sb.toString();
-	}
 
 	 static boolean isNameChar(char ch) {
 		
@@ -368,35 +324,7 @@ public class BSON {
 	
 	}
 
-	static String getArg( String[] args , String name , String def )
-	{
-	
-		for(int i = 0 ; i < args.length-1 ; i+=2 ){
-			if( args[i].startsWith("-")){
-				if( args[i].substring(1).equals(name) )
-					return args[i+1];
-			}
-				else
-			        break;
-		}
-		return def ;
-		
-	}
-
-	static boolean hasArg( String[] args , String name  )
-	{
-	
-		for(int i = 0 ; i < args.length ; i++ ){
-			if( args[i].startsWith("-")){
-				if( args[i].substring(1).equals(name) )
-					return true;
-			}
-		}
-		return false ;
-		
-	}
-	
-/**
+	/**
 	 * 
 	 */
 	static <E extends Enum<E>> int  enumSetToFlags(EnumSet<E>  set )

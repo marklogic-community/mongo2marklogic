@@ -13,9 +13,11 @@ Result
 RUN
 
 
-To import a collection generated from mongodump run  
-   java -jar mongoimport.jar [-input file] -connection conn [-root root] [-collection collection] [-threads n] [-batch n]
+To import a collection generated from mongodump and store to a MarkLogic server run  
+   java -jar mongoimport.jar  [-input file] -connection conn [-root root] [-collection collection] [-threads n] [-batch n] [-writer json|bson]
    
+To import a collection generated from mongodump and store to a local filesystem directory as XML documents
+    java -jar mongoimport.jar [-input file] -directory dir [-writer json|bson]
    
 Options
    -input filename   
@@ -38,6 +40,15 @@ Options
    -connection  url
           Specifies the xcc or xccs connection 
           Default: xcc://localhost:9003
+   
+   -directory dir
+          Specifies that files are to be written to a local filesystem directory "dir" instead of storing in a MarkLogic server
+    
+   -writer  json|bson
+          Indicates which format is used for XML document generation.  "json" indicateds to use the MarkLogic XML JSON format.  
+          "bson" indicates to use a fully semanticaly rich XML format designed for storing mongo data.
+          
+          
           
    
    
