@@ -13,10 +13,12 @@ Result
 RUN
 
 
-To import a collection generated from mongodump and store to a MarkLogic server run  
-   java -jar mongoimport.jar  [-input file] -connection conn [-root root] [-collection collection] [-threads n] [-batch n] [-writer json|bson]
+To import a collection generated from mongodump and store to a MarkLogic server run    
+
+    java -jar mongoimport.jar  [-input file] -connection conn [-root root] [-collection collection] [-threads n] [-batch n] [-writer json|bson]
    
 To import a collection generated from mongodump and store to a local filesystem directory as XML documents
+
     java -jar mongoimport.jar [-input file] -directory dir [-writer json|bson]
    
 Options
