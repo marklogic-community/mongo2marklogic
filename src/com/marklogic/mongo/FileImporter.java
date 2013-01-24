@@ -49,6 +49,9 @@ public class FileImporter extends Importer {
 
 		BSONInputStream bos = new BSONInputStream(is);
 
+        long tm_start = System.currentTimeMillis();
+		
+		int files = 0;
 		while (is.available() > 0) {
 			
 			XMLWriter bxw = getWriter(args);
@@ -56,7 +59,14 @@ public class FileImporter extends Importer {
 			
 			put(  bxw.close() );
 
+			files++;
 		}
+		
+		long tm_stop = System.currentTimeMillis();
+        long ms = tm_stop - tm_start ; 
+        
+        Importer.completed(files);
+        
 		
 		
 	}

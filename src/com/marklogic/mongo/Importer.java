@@ -11,7 +11,14 @@ public abstract class Importer
 
     private Random mRandom = new Random();
 
-
+    protected static int totalFiles = 0;
+    
+    synchronized static void completed( int files  )
+    {
+        totalFiles += files ;
+    }
+    
+    
     abstract void run(String[] args) throws XccConfigException, Exception;
 
 
@@ -58,14 +65,25 @@ public abstract class Importer
      */
     public static void main(String[] args) throws XccConfigException, Exception
     {
+        
 
+        long tm_start = System.currentTimeMillis();
+        
         if( hasArg(args,"directory"))
             new FileImporter().run(args);
         else
         if(hasArg(args,"connection"))
             new XCCImporter().run(args);
-        else
+        else 
             usage();
+        
+        long tm_stop = System.currentTimeMillis();
+        long ms = tm_stop - tm_start ; 
+        
+        
+      
+        System.out.println("Total docs:  " + totalFiles + " total time: " + String.valueOf(  ((double)ms) /1000. ) +  " = " +
+                ((double)totalFiles / (ms/1000.)) + " docs/sec" );
 
     }
 

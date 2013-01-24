@@ -110,18 +110,28 @@ public abstract class XMLWriter
     }
 
     /*
-     * element ::= "\x01" e_name double Floating point 
-     * "\x02" e_name string
-     * UTF-8 string | "\x03" e_name document Embedded document | "\x04" e_name
-     * document Array | "\x05" e_name binary Binary data | "\x06" e_name
-     * Undefined — Deprecated | "\x07" e_name (byte*12) ObjectId | "\x08" e_name
-     * "\x00" Boolean "false" | "\x08" e_name "\x01" Boolean "true" | "\x09"
-     * e_name int64 UTC datetime | "\x0A" e_name Null value | "\x0B" e_name
-     * cstring cstring Regular expression | "\x0C" e_name string (byte*12)
-     * DBPointer — Deprecated | "\x0D" e_name string JavaScript code | "\x0E"
-     * e_name string Symbol — Deprecated | "\x0F" e_name code_w_s JavaScript
-     * code w/ scope | "\x10" e_name int32 32-bit Integer | "\x11" e_name int64
-     * Timestamp | "\x12" e_name int64 64-bit integer | "\xFF" e_name Min key |
+     * element ::=
+     * "\x01" e_name double Floating point 
+     * "\x02" e_name string UTF-8 string | 
+     * "\x03" e_name document Embedded document | 
+     * "\x04" e_name document Array | 
+     * "\x05" e_name binary Binary data | 
+     * "\x06" e_name Undefined — Deprecated | 
+     * "\x07" e_name (byte*12) ObjectId | 
+     * "\x08" e_name |
+     * "\x00" Boolean "false" | 
+     * "\x08" e_name "\x01" Boolean "true" | 
+     * "\x09" e_name int64 UTC datetime | 
+     * "\x0A" e_name Null value | 
+     * "\x0B" e_name cstring cstring Regular expression | 
+     * "\x0C" e_name string (byte*12) DBPointer — Deprecated | 
+     * "\x0D" e_name string JavaScript code | 
+     * "\x0E" e_name string Symbol — Deprecated | 
+     * "\x0F" e_name code_w_s JavaScript code w/ scope | 
+     * "\x10" e_name int32 32-bit Integer | 
+     * "\x11" e_name int64 Timestamp | 
+     * "\x12" e_name int64 64-bit integer | 
+     * "\xFF" e_name Min key |
      * "\x7F" e_name Max key
      */
 
@@ -240,8 +250,14 @@ public abstract class XMLWriter
 
     protected void value(String string) throws XMLStreamException
     {
-        writer.writeCharacters(string);
+        
+        try {
+            writer.writeCharacters(string);
 
+        } catch( Exception e ) 
+        {
+           System.err.println("Exception writing invalid value: " + string );   
+        }
     }
 
     protected void endElement() throws XMLStreamException

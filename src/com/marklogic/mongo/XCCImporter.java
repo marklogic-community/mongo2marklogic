@@ -40,6 +40,9 @@ public class XCCImporter extends Importer {
 	private DocumentBatch mBatch;
 	private ThreadPoolExecutor mPool = null;
 	protected	ContentSource	mContentSource = null ;
+	
+	
+	
 
 	static class DocumentBatch {
 		
@@ -107,6 +110,8 @@ public class XCCImporter extends Importer {
 				long ms = tm_stop - tm_start ; 
 				log("Thread: " + Thread.currentThread().getName() + " Completed in " + ms + " ms: " + 
 				((double)mContents.size() / (ms/1000.)) + " docs/sec");
+				
+				Importer.completed( mContents.size());
 			}
 		}
 
