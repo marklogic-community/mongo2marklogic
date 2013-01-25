@@ -2,7 +2,7 @@
 
 mongo2marklogic is a Java-based tool for importing data from MongoDB into MarkLogic's [Enterprise NoSQL][] database. 
 
-It reads data from MongoDB's [mongoexport][] tool and loads data using a [MarkLogic XDBC Server][].
+It reads JSON data from MongoDB's [mongoexport][] tool and loads data into MarkLogic using a [MarkLogic XDBC Server][].
 
 If you are new to MarkLogic, go
 
@@ -42,8 +42,8 @@ This creates a file called `mongo2marklogic.jar`.
           Default: "" 
           
     -collection coll
-           Specifies a MarkLogic `collection` into which to place the documents
-           Default: none
+          Specifies a MarkLogic `collection` into which to place the documents
+          Default: none
           
     -connection  url
           Specifies an xcc or xccs connection to your MarkLogic XDBC server.  
@@ -51,7 +51,8 @@ This creates a file called `mongo2marklogic.jar`.
           Default: xcc://localhost:9003
    
     -directory dir
-          Specifies documents are to be written to a local filesystem directory "dir" instead of storing in a MarkLogic server
+          Specifies documents are to be written to a local filesystem directory "dir" instead of storing in a
+          MarkLogic server
     
     -writer  json|bson
           Indicates which format is used for conversion from BSON to MarkLogic documents.  
