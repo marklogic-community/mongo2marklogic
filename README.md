@@ -17,7 +17,7 @@ After that you may choose to
 
 # Build
 
-To build mongo2marklogic, run
+To build mongo2marklogic, pull down the code from https://github.com/marklogic/mongo2marklogic and run
 
     % ant jar
 
@@ -62,7 +62,7 @@ This creates a file called `mongo2marklogic.jar`.
    
 Documents are created named `<root><random #>.xml`
       
-# Examples
+# Usage
 
 To import a collection generated from mongodump and store to a MarkLogic server run:    
 
