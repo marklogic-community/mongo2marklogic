@@ -7,7 +7,7 @@ It reads data from MongoDB's [mongoexport][] tool and loads data using a [MarkLo
 If you are new to MarkLogic, go
 
  1. [Download MarkLogic][], browse to the [admin interface on port 8001](http://localhost:8001), and request a free license.
- 2. [Create a MarkLogic XDBC server][].
+ 2. [Create a MarkLogic XDBC server][MarkLogic XDBC Server].
  3. You may want to read [Working with JSON in MarkLogic][].
 
 After that you may choose to 
@@ -83,7 +83,7 @@ mongo2marklogic is licensed under the Apache License, Version 2.0 (see [LICENSE.
 [Download MarkLogic]: http://developer.marklogic.com/products
 [Architectural Summary]: http://developer.marklogic.com/learn/arch/diagram-101
 [free license]: http://developer.marklogic.com/express
-[Create a MarkLogic XDBC Server]: http://docs.marklogic.com/guide/admin/xdbc#id_21458
+[MarkLogic XDBC Server]: http://docs.marklogic.com/guide/admin/xdbc#id_21458
 [mongoexport]: http://docs.mongodb.org/manual/reference/mongoexport/
 [XCC Sessions]: http://docs.marklogic.com/guide/xcc/concepts#id_15580
 [Working with JSON in MarkLogic]: http://docs.marklogic.com/guide/app-dev/json
