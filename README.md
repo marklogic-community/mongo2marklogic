@@ -7,11 +7,12 @@ It reads data from MongoDB's [mongoexport][] tool and loads data using a [MarkLo
 If you are new to MarkLogic, go
 
  1. [Download MarkLogic][], browse to the [admin interface on port 8001](http://localhost:8001), and request a free license.
+You may find this [MarkLogic Setup Screen Cast][] helpful as well.
  2. [Create a MarkLogic XDBC server][MarkLogic XDBC Server].
  3. You may want to read [Working with JSON in MarkLogic][].
 
 After that you may choose to 
- * Use MarkLogic's REST API to search your data (link to wiki TBD
+ * Use MarkLogic's REST API to search your data (link to wiki TBD)
  * Build a search application and explore your data using MarkLogic's Application Builder tool. (link to wiki TBD)
 
 # Build
@@ -85,6 +86,7 @@ mongo2marklogic is licensed under the Apache License, Version 2.0 (see [LICENSE.
 [free license]: http://developer.marklogic.com/express
 [MarkLogic XDBC Server]: http://docs.marklogic.com/guide/admin/xdbc#id_21458
 [mongoexport]: http://docs.mongodb.org/manual/reference/mongoexport/
+[MarkLogic Setup Screen Cast]: http://www.youtube.com/watch?feature=player_embedded&v=n4Oem-DsQaU
 [XCC Sessions]: http://docs.marklogic.com/guide/xcc/concepts#id_15580
 [Working with JSON in MarkLogic]: http://docs.marklogic.com/guide/app-dev/json
 [BSON]: http://bsonspec.org/
