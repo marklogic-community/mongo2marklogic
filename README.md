@@ -1,60 +1,90 @@
-MongoImport README
-http://www.marklogic.com
+# mongo2marklogic 
 
-MongoImport is a POC for support for importing data from a Mongo Database into a MarkLogic dataase.
-BUILD
+mongo2marklogic is a Java-based tool for importing data from MongoDB into MarkLogic's [Enterprise NoSQL][] database. 
 
-    ant jar
+It reads data from MongoDB's [mongoexport][] tool and loads data using a [MarkLogic XDBC Server][].
 
-Result
-   mongoimport.jar
+If you are new to MarkLogic, go
+
+ 1. [Download MarkLogic][], browse to the [admin interface on port 8001](http://localhost:8001), and request a free license.
+ 2. [Create a MarkLogic XDBC server][].
+ 3. You may want to read [Working with JSON in MarkLogic][].
+
+After that you may choose to 
+ * Use MarkLogic's REST API to search your data (link to wiki TBD
+ * Build a search application and explore your data using MarkLogic's Application Builder tool. (link to wiki TBD)
+
+# Build
+
+To build mongo2marklogic, run
+
+    % ant jar
+
+This creates a file called `mongo2marklogic.jar`.   
    
-   
-RUN
+# Command-line Options
 
-
-To import a collection generated from mongodump and store to a MarkLogic server run    
-
-    java -jar mongoimport.jar  [-input file] -connection conn [-root root] [-collection collection] [-threads n] [-batch n] [-writer json|bson]
-   
-To import a collection generated from mongodump and store to a local filesystem directory as XML documents
-
-    java -jar mongoimport.jar [-input file] -directory dir [-writer json|bson]
-   
-Options
-   -input filename   
+    -input filename   
           Specifies the input bson file
           Default: reads from stdin
-   -threads n
+    
+    -threads n
           Specifies the number of threads to use for writing to the MarkLogic server
           Default: 1
-   -batch  n
+    
+    -batch  n
           Specifies the number of documents to batch in a single transaction
           Default: 100
-   -root uri
-          Specifies the root URI to place generated XML files in MarkLogic
+          
+    -root uri
+          Specifies a root URI underwhich to place the documents in MarkLogic
           Default: "" 
           
-   -collection coll
-           Specifies the collection to place the documents
+    -collection coll
+           Specifies a MarkLogic `collection` into which to place the documents
            Default: none
           
-   -connection  url
-          Specifies the xcc or xccs connection 
+    -connection  url
+          Specifies an xcc or xccs connection to your MarkLogic XDBC server.  
+          (See http://docs.marklogic.com/guide/xcc/concepts#id_15580 for details.)
           Default: xcc://localhost:9003
    
-   -directory dir
-          Specifies that files are to be written to a local filesystem directory "dir" instead of storing in a MarkLogic server
+    -directory dir
+          Specifies documents are to be written to a local filesystem directory "dir" instead of storing in a MarkLogic server
     
-   -writer  json|bson
-          Indicates which format is used for XML document generation.  "json" indicateds to use the MarkLogic XML JSON format.  
-          "bson" indicates to use a fully semanticaly rich XML format designed for storing mongo data.
-          
-          
-          
+    -writer  json|bson
+          Indicates which format is used for conversion from BSON to MarkLogic documents.  
+          "json" - uses the MarkLogic basic strategy for converting from JSON.  
+                    (See http://docs.marklogic.com/guide/app-dev/json for details.)
+          "bson" - use a conversion designed to fully maintain Mongo's BSON semantics.
+                    (Details TBD).
    
-   
-Documents are created named 
-
-      <root><random #>.xml
+Documents are created named `<root><random #>.xml`
       
+# Examples
+
+To import a collection generated from mongodump and store to a MarkLogic server run:    
+
+    java -jar mongo2marklogic.jar  [-input file] -connection conn \
+         [-root root] [-collection collection] \
+         [-threads n] [-batch n] [-writer json|bson]
+   
+To import a collection generated from mongodump and store to a local filesystem directory:
+
+    java -jar mongo2marklogic.jar [-input file] -directory dir [-writer json|bson]
+
+# License
+
+mongo2marklogic is licensed under the Apache License, Version 2.0 (see [LICENSE.txt][]).
+
+[MarkLogic]: http://developer.marklogic.com    
+[LICENSE.txt]: https://github.com/marklogic/mongo2marklogic/blog/master/LICENSE.txt
+[Enterprise NoSQL]: http://developer.marklogic.com/products/marklogic-server/enterprise-nosql
+[Download MarkLogic]: http://developer.marklogic.com/products
+[Architectural Summary]: http://developer.marklogic.com/learn/arch/diagram-101
+[free license]: http://developer.marklogic.com/express
+[Create a MarkLogic XDBC Server]: http://docs.marklogic.com/guide/admin/xdbc#id_21458
+[mongoexport]: http://docs.mongodb.org/manual/reference/mongoexport/
+[XCC Sessions]: http://docs.marklogic.com/guide/xcc/concepts#id_15580
+[Working with JSON in MarkLogic]: http://docs.marklogic.com/guide/app-dev/json
+[BSON]: http://bsonspec.org/
