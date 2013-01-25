@@ -5,49 +5,49 @@
               directory with the processing instruction <?eclipse.ant.import?>
               as the first entry and export the buildfile again. -->
 <project basedir="." default="build" name="mongo2marklogic">
-    <property environment="env"/>
-    <property name="debuglevel" value="source,lines,vars"/>
-    <property name="target" value="1.6"/>
-    <property name="source" value="1.6"/>
-    <path id="mongo2marklogic.classpath">
-        <pathelement location="_out"/>
-        <pathelement location="lib/stax-utils.jar"/>
-        <pathelement location="lib/stax2-api-3.0.1.jar"/>
-        <pathelement location="lib/woodstox-core-asl-4.0.3.jar"/>
-        <pathelement location="lib/marklogic-xcc-6.0.20120912.jar"/>
-    </path>
-    <target name="init">
-        <mkdir dir="_out"/>
-        <copy includeemptydirs="false" todir="_out">
-            <fileset dir="src">
-                <exclude name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
-    <target name="clean">
-        <delete dir="_out"/>
-    </target>
-    <target depends="clean" name="cleanall"/>
-    <target depends="build-subprojects,build-project" name="build"/>
-    <target name="build-subprojects"/>
-    <target depends="init" name="build-project">
-        <echo message="${ant.project.name}: ${ant.file}"/>
-        <javac debug="true" debuglevel="${debuglevel}" destdir="_out" source="${source}" target="${target}">
-            <src path="src"/>
-            <classpath refid="mongo2marklogic.classpath"/>
-        </javac>
-    </target>
-	  <target name="jar" depends="build">
-	   
-	    <jar destfile="mongo2marklogic.jar"
-	         basedir="_out"
-	         includes="**/*.class">
-	      <manifest>
-	        <attribute name="Main-Class" value="com.marklogic.mongo.Importer" />
-          <attribute name="Class-Path" value="lib/stax-utils.jar lib/stax2-api-3.0.1.jar lib/woodstox-core-asl-4.0.3.jar lib/marklogic-xcc-6.0.20120912.jar"/>  
+	<property environment="env" />
+	<property name="debuglevel" value="source,lines,vars" />
+	<property name="target" value="1.6" />
+	<property name="source" value="1.6" />
+	<path id="mongo2marklogic.classpath">
+		<pathelement location="_out" />
+		<pathelement location="lib/stax-utils.jar" />
+		<pathelement location="lib/stax2-api-3.0.1.jar" />
+		<pathelement location="lib/woodstox-core-asl-4.0.3.jar" />
+		<pathelement location="lib/marklogic-xcc-6.0.20120912.jar" />
+	</path>
+	<target name="init">
+		<mkdir dir="_out" />
+		<copy includeemptydirs="false" todir="_out">
+			<fileset dir="src">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+	</target>
+	<target name="clean">
+                <delete file="mongo2marklogic.jar"	/>
+		<delete dir="_out" />
+	</target>
+	<target depends="clean" name="cleanall" />
+	<target depends="build-subprojects,build-project" name="build" />
+	<target name="build-subprojects" />
+	<target depends="init" name="build-project">
+		<echo message="${ant.project.name}: ${ant.file}" />
+		<javac debug="true" debuglevel="${debuglevel}" destdir="_out" includeantruntime="false" source="${source}" target="${target}">
+			<src path="src" />
+			<classpath refid="mongo2marklogic.classpath" />
+		</javac>
+	</target>
+	<target name="jar" depends="build">
 
-	      </manifest>
-	    </jar>
-	  </target>
-    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+		<jar destfile="mongo2marklogic.jar" basedir="_out" includes="**/*.class">
+			<manifest>
+				<attribute name="Main-Class" value="com.marklogic.mongo.Importer" />
+				<attribute name="Class-Path" value="lib/stax-utils.jar lib/stax2-api-3.0.1.jar lib/woodstox-core-asl-4.0.3.jar lib/marklogic-xcc-6.0.20120912.jar" />
+
+			</manifest>
+		</jar>
+	</target>
+
+	<target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects" />
 </project>
