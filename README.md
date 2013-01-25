@@ -66,13 +66,13 @@ Documents are created named `<root><random #>.xml`
 
 To import a collection generated from mongodump and store to a MarkLogic server run:    
 
-    java -jar mongo2marklogic.jar  [-input file] -connection conn \
+    % java -jar mongo2marklogic.jar  [-input file] -connection conn \
          [-root root] [-collection collection] \
          [-threads n] [-batch n] [-writer json|bson]
    
 To import a collection generated from mongodump and store to a local filesystem directory:
 
-    java -jar mongo2marklogic.jar [-input file] -directory dir [-writer json|bson]
+    % java -jar mongo2marklogic.jar [-input file] -directory dir [-writer json|bson]
 
 # License
 
