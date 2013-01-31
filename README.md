@@ -76,7 +76,7 @@ To import a collection generated from mongodump and store to a local filesystem 
     % java -jar mongo2marklogic.jar [-input file] -directory dir [-writer json|bson]
 
 # License
-
+ 
 mongo2marklogic is licensed under the Apache License, Version 2.0 (see [LICENSE.txt][]).
 
 [MarkLogic]: http://developer.marklogic.com    
