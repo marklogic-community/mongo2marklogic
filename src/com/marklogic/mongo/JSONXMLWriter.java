@@ -25,7 +25,7 @@ import com.marklogic.mongo.BSON.ElementNamesBS;
 
 
 public class JSONXMLWriter extends XMLWriter
-{
+{ 
     
 
     JSONXMLWriter() throws XMLStreamException

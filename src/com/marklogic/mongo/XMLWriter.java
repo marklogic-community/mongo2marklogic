@@ -132,7 +132,7 @@ public abstract class XMLWriter
      * "\x03" e_name document Embedded document | 
      * "\x04" e_name document Array | 
      * "\x05" e_name binary Binary data | 
-     * "\x06" e_name Undefined — Deprecated | 
+     * "\x06" e_name Undefined  Deprecated | 
      * "\x07" e_name (byte*12) ObjectId | 
      * "\x08" e_name |
      * "\x00" Boolean "false" | 
@@ -140,9 +140,9 @@ public abstract class XMLWriter
      * "\x09" e_name int64 UTC datetime | 
      * "\x0A" e_name Null value | 
      * "\x0B" e_name cstring cstring Regular expression | 
-     * "\x0C" e_name string (byte*12) DBPointer — Deprecated | 
+     * "\x0C" e_name string (byte*12) DBPointer  Deprecated | 
      * "\x0D" e_name string JavaScript code | 
-     * "\x0E" e_name string Symbol — Deprecated | 
+     * "\x0E" e_name string Symbol  Deprecated | 
      * "\x0F" e_name code_w_s JavaScript code w/ scope | 
      * "\x10" e_name int32 32-bit Integer | 
      * "\x11" e_name int64 Timestamp | 
@@ -247,8 +247,8 @@ public abstract class XMLWriter
             writeKey(e_name, type);
             break;
 
-        // "\x0E" e_name string Symbol — Deprecated
-        // "\x06" e_name Undefined — Deprecated
+        // "\x0E" e_name string Symbol  Deprecated
+        // "\x06" e_name Undefined  Deprecated
         case 0xC:
         case 0xE:
         case 0x6:
