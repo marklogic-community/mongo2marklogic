@@ -17,7 +17,11 @@ After that you may choose to
  * Use MarkLogic's REST API to search your data (link to wiki TBD)
  * Build a search application and explore your data using MarkLogic's Application Builder tool. (link to wiki TBD)
 
-# Build
+# Export data from Mongo via mongodump
+
+Blah blah
+
+# Build mongo2marklogic
 
 To build mongo2marklogic, pull down the code from https://github.com/marklogic/mongo2marklogic and run
 
