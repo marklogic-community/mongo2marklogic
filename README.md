@@ -1,3 +1,5 @@
+<img src="http://developer.marklogic.com/media/mongo2marklogic.png" alt="mongo2marklogic" title="mongo2marklogic"/>
+
 # mongo2marklogic 
 
 mongo2marklogic is a Java-based tool for importing data from MongoDB into MarkLogic's [Enterprise NoSQL][] database. 
