@@ -8,16 +8,22 @@ It reads JSON data from MongoDB's [mongodump][] tool and loads data into MarkLog
 
 If you are new to MarkLogic, go
 
- 1. [Download MarkLogic][], browse to the [admin interface on port 8001](http://localhost:8001), and request a free license.
-You may find this [MarkLogic Setup Screen Cast][] helpful as well.
- 2. Create a MarkLogic XDBC Server with the following details:
-   - Server Name: `Import-XDBC`
-   - Root: `/`
-   - Port: `9003`
-   - Database: `Documents` 
- Use the defaults for everything else. You can use other ports or another database if you choose. Our examples use port 9003 and assume 
- you are starting with an empty database. For more details, please see [Administrator's Guide][MarkLogic XDBC Server].
- 3. You may want to read [Working with JSON in MarkLogic][].
+1. [Download MarkLogic][], browse to the [admin interface on port 8001](http://localhost:8001), and 
+    request a free license. After that, create a database and set up a REST API instance on it using port 8003
+    (You can use a different port, but the examples below port 8003 for the REST API).  
+    This [MarkLogic Setup Screen Cast][] will help you through these steps, if you get stuck.
+2. Use the Admin UI on port 8001 to create a MarkLogic XDBC Server with the following details:
+
+        Server Name: Import-XDBC
+        Root: /
+        Port: 9003
+        Database: Documents 
+    
+    Use the defaults for everything else. You can use a different server name or port or another database 
+    if you choose. Our examples use port 9003 and assume you are starting with an empty database. For more details,
+    please see [Administrator's Guide][MarkLogic XDBC Server].
+
+3. You may want to read [Working with JSON in MarkLogic][].
 
 After that you may choose to 
  * Use MarkLogic's REST API to search your data (link to wiki TBD)
