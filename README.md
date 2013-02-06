@@ -10,7 +10,13 @@ If you are new to MarkLogic, go
 
  1. [Download MarkLogic][], browse to the [admin interface on port 8001](http://localhost:8001), and request a free license.
 You may find this [MarkLogic Setup Screen Cast][] helpful as well.
- 2. [Create a MarkLogic XDBC server][MarkLogic XDBC Server] on port 9003 (you can use other ports if you choose to; our examples use port 9003).
+ 2. Create a MarkLogic XDBC Server with the following details:
+   - Server Name: `Import-XDBC`
+   - Root: `/`
+   - Port: `9003`
+   - Database: `Documents` 
+ Use the defaults for everything else. You can use other ports or another database if you choose. Our examples use port 9003 and assume 
+ you are starting with an empty database. For more details, please see [Administrator's Guide][MarkLogic XDBC Server].
  3. You may want to read [Working with JSON in MarkLogic][].
 
 After that you may choose to 
