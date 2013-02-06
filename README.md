@@ -11,7 +11,7 @@ If you are new to MarkLogic, go
 1. [Download MarkLogic][], browse to the [admin interface on port 8001](http://localhost:8001), and 
    request a free license. After that, create a database named Import-DB 
    and set up a REST API instance on it using port 8003
-   (You can use a different port, but the examples below port 8003 for the REST API). This 
+   (You can use a different database name and port, but the examples below use these values). This 
    [MarkLogic Setup Screen Cast][] will help you through these steps, if you get stuck.
 2. Use the Admin UI on port 8001 to create a MarkLogic XDBC Server with the following details:
 
