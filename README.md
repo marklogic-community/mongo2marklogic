@@ -1,4 +1,4 @@
-<img src="http://developer.marklogic.com/media/mongo2marklogic.png" alt="mongo2marklogic" title="mongo2marklogic"/>
+<a href="http://developer.marklogic.com/labs/mongo2marklogic"><img src="http://developer.marklogic.com/media/mongo2marklogic.png" alt="mongo2marklogic" title="mongo2marklogic"/></a>
 
 # mongo2marklogic 
 
