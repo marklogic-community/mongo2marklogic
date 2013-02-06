@@ -210,12 +210,11 @@ public class XCCImporter extends Importer {
 		
 	}
 	private void flush() {
-		if(! mBatch.isEmpty() ){
-		mPool.execute(new PutContent(mContentSource.newSession() , mBatch) );
-	     //new PutContent(mContentSource.newSession() , mBatch).run();
-	     mBatch = null ;
+		if(mBatch != null && ! mBatch.isEmpty() ){
+		   mPool.execute(new PutContent(mContentSource.newSession() , mBatch) );
+	       //new PutContent(mContentSource.newSession() , mBatch).run();
+	       mBatch = null ;
 		}
-		log("main - finished flush");
 
 
 	}
