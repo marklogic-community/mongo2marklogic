@@ -8,32 +8,6 @@ It reads JSON data from MongoDB's [mongodump][] tool and loads data into MarkLog
 
 If you are new to MarkLogic, and want to try this out see this [Example][]
 
-1. [Download MarkLogic][], browse to the [admin interface on port 8001](http://localhost:8001), and 
-   request a free license. After that, create a database named Import-DB 
-   and set up a REST API instance on it using port 8003.
-   You can use a different database name and port, but the examples below use these values. This 
-   [MarkLogic Setup Screen Cast][] will help you through these steps, if you get stuck.
-2. Use the Admin UI on port 8001 to create a MarkLogic XDBC Server with the following details:
-
-        Server Name: Import-XDBC
-        Root: /
-        Port: 9003
-        Database: Import-DB 
-    
-    Use the defaults for everything else. You can use a different server name or port or another database 
-    if you choose. Our examples use port 9003 and assume you are starting with an empty database. For more details,
-    please see [Administrator's Guide][MarkLogic XDBC Server].
-
-3. You may want to read [Working with JSON in MarkLogic][].
-
-After that you may choose to 
- * Use MarkLogic's REST API to search your data (link to wiki TBD)
- * Build a search application and explore your data using MarkLogic's Application Builder tool. (link to wiki TBD)
-
-# Export data from Mongo via mongodump
-
-Blah blah
-
 # Build mongo2marklogic
 
 To build mongo2marklogic, pull down the code from https://github.com/marklogic/mongo2marklogic and run
@@ -103,7 +77,7 @@ mongo2marklogic is licensed under the Apache License, Version 2.0 (see [LICENSE.
 [Enterprise NoSQL]: http://developer.marklogic.com/products/marklogic-server/enterprise-nosql
 [Download MarkLogic]: http://developer.marklogic.com/products
 [Architectural Summary]: http://developer.marklogic.com/learn/arch/diagram-101
-[free license]: http://developer.marklogic.com/express
+[free license]: http://developer.marklogic.com/developer
 [MarkLogic XDBC Server]: http://docs.marklogic.com/guide/admin/xdbc#id_21458
 [mongodump]: http://docs.mongodb.org/manual/reference/mongodump/
 [MarkLogic Setup Screen Cast]: http://www.youtube.com/watch?feature=player_embedded&v=n4Oem-DsQaU
