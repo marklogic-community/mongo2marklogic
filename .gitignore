@@ -1,1 +1,5 @@
 _out
+mongo2marklogic.jar
+sample/dump/
+sample/sample.json
+sample/twitter.bson

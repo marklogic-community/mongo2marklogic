@@ -84,4 +84,4 @@ mongo2marklogic is licensed under the Apache License, Version 2.0 (see [LICENSE.
 [XCC Sessions]: http://docs.marklogic.com/guide/xcc/concepts#id_15580
 [Working with JSON in MarkLogic]: http://docs.marklogic.com/guide/app-dev/json
 [BSON]: http://bsonspec.org/
-[Example]: https://github.com/marklogic/mongo2marklogic/wiki/Example
+[Example]: https://github.com/marklogic/mongo2marklogic/blob/master/sample/README.md
