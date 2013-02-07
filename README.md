@@ -6,7 +6,7 @@ mongo2marklogic is a Java-based tool for importing data from MongoDB into MarkLo
 
 It reads JSON data from MongoDB's [mongodump][] tool and loads data into MarkLogic using a [MarkLogic XDBC Server][].
 
-If you are new to MarkLogic, go
+If you are new to MarkLogic, and want to try this out see this [Example][]
 
 1. [Download MarkLogic][], browse to the [admin interface on port 8001](http://localhost:8001), and 
    request a free license. After that, create a database named Import-DB 
@@ -110,3 +110,4 @@ mongo2marklogic is licensed under the Apache License, Version 2.0 (see [LICENSE.
 [XCC Sessions]: http://docs.marklogic.com/guide/xcc/concepts#id_15580
 [Working with JSON in MarkLogic]: http://docs.marklogic.com/guide/app-dev/json
 [BSON]: http://bsonspec.org/
+[Example]: https://github.com/marklogic/mongo2marklogic/wiki/Example
