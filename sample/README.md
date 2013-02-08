@@ -22,7 +22,8 @@ loaded into mongo named `sample.json` in the .zip file).
    and set up a REST API instance on it using port `8003`.
    You can use a different database name and port, but this example uses these values. The 
    [MarkLogic Setup Screen Cast][] will help you through these steps if you get stuck.
-2. Use the [Admin interface on port 8001](http://localhost:8001) to create a MarkLogic XDBC Server with the following details:
+2. Use the [Admin interface on port 8001](http://localhost:8001) to create a MarkLogic XDBC Server with the 
+   following details:
 
         Server Name: Import-XDBC
         Root: /
@@ -31,11 +32,13 @@ loaded into mongo named `sample.json` in the .zip file).
     
     Use the defaults for everything else. You can use a different server name or port or use another database 
     if you choose. This example uses port 9003 and assumes you are starting with an empty database. 
-    For more details, please see section in the Administrator's Guide on [Creating XDBC Servers][MarkLogic XDBC Server].
+    For more details, see the section in the MarkLogic Administrator's Guide on 
+    [Creating XDBC Servers][MarkLogic XDBC Server].
 
 # Build mongo2marklogic
 
-If you haven't yet, you must build mongo2marklogic. Pull down the code from https://github.com/marklogic/mongo2marklogic and run
+If you haven't yet, you must build mongo2marklogic. Pull down the code from 
+https://github.com/marklogic/mongo2marklogic and run
 
     % ant jar
 
@@ -43,7 +46,9 @@ This creates a file called `mongo2marklogic.jar`.
 
 # Importing into MarkLogic
 
-You will need a username and password to connect to MarkLogic. (You can use the admin user account if you have not yet created any other).  To import the sample `twitter.bson` dump into MarkLogic and place it into a collection named `twitter` :
+You will need a username and password to connect to MarkLogic. (You can use the admin user account if you 
+have not yet created any other).  To import the sample `twitter.bson` dump into MarkLogic and place 
+it into a collection named `twitter` :
 
     % cd sample
     % unzip sample.zip
@@ -100,11 +105,14 @@ To find a tweet based on it's Mongo `_id`, do
 
 To find all the tweets that have the word `niners` OR `ravens` in them, do
 
-    % curl -s --anyauth --user 'user:password' 'http://localhost:8003/v1/search?q=niners%20OR%20ravens&format=json' | json results
+    % curl -s --anyauth --user 'user:password' 'http://localhost:8003/v1/search?q=niners%20OR%20ravens&format=json' |\
+         json results
 
 # Next Steps
 
-You may want to read [Working with JSON in MarkLogic][] or [learn about the MarkLogic REST API][]
+To learn more about how MarkLogic stores JSON and the kinds of things you can do, 
+see [Working with JSON in MarkLogic][]. To get a more thorough introduction to the MarkLogic REST API
+see this [tutorial][learn about the MarkLogic REST API].
 
 [MarkLogic]: http://developer.marklogic.com    
 [LICENSE.txt]: https://github.com/marklogic/mongo2marklogic/blog/master/LICENSE.txt
