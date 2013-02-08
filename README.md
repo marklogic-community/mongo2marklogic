@@ -2,7 +2,7 @@
 
 # mongo2marklogic 
 
-mongo2marklogic is a Java-based tool for importing data from MongoDB into MarkLogic's [Enterprise NoSQL][] database. 
+mongo2marklogic is a Java-based tool for transfering data from MongoDB into MarkLogic's [Enterprise NoSQL][] database. 
 
 It reads JSON data from MongoDB's [mongodump][] tool and loads data into MarkLogic using a [MarkLogic XDBC Server][].
 
