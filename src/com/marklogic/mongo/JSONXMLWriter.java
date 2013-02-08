@@ -144,4 +144,10 @@ public class JSONXMLWriter extends XMLWriter
         attribute( "type" , stype );
         
     }
+
+    @Override
+    String getSuffix()
+    {
+        return ".json" ;
+    }
 }

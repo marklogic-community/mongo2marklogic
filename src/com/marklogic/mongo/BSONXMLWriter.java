@@ -159,6 +159,17 @@ class BSONXMLWriter  extends XMLWriter {
         writeDocumentNS(BSON.getEnumName(ElementNamesBS.document), AttributeNames.document, bos);
         
     }
+
+
+
+
+
+
+    @Override
+    String getSuffix()
+    {
+        return ".xml" ;
+    }
 	
 
 	

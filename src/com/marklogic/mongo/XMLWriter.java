@@ -50,6 +50,7 @@ public abstract class XMLWriter
     
     abstract String getNSURI() ;
     abstract String getNSPrefix();
+    abstract String getSuffix();
     
 
 

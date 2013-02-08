@@ -56,6 +56,7 @@ public class XCCImporter extends Importer {
 	private DocumentBatch mBatch;
 	private ThreadPoolExecutor mPool = null;
 	protected	ContentSource	mContentSource = null ;
+    private XMLWriter mWriter;
 	
 	
 	
@@ -181,12 +182,12 @@ public class XCCImporter extends Importer {
 
 		BSONInputStream bos = new BSONInputStream(is);
 
+       
 		while (is.available() > 0) {
+		    mWriter = getWriter(args);
+			mWriter.writeDocumentRoot( bos );
 			
-			XMLWriter bxw = getWriter(args);
-			bxw.writeDocumentRoot( bos );
-			
-			put(  bxw.close() );
+			put(  mWriter.close() );
 
 		}
 		
@@ -219,7 +220,7 @@ public class XCCImporter extends Importer {
 
 	}
 	private String getUri() {
-		return mRoot + getRandom() + ".xml";
+		return mRoot + getRandom() +mWriter.getSuffix();
 	}
 	
 	private static void usage() {
