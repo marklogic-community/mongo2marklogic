@@ -119,7 +119,7 @@ see this [tutorial][learn about the MarkLogic REST API].
 [Enterprise NoSQL]: http://developer.marklogic.com/products/marklogic-server/enterprise-nosql
 [Download MarkLogic]: http://developer.marklogic.com/products
 [Architectural Summary]: http://developer.marklogic.com/learn/arch/diagram-101
-[free license]: http://developer.marklogic.com/developer
+[free license]: http://developer.marklogic.com/free-developer
 [MarkLogic XDBC Server]: http://docs.marklogic.com/guide/admin/xdbc#id_21458
 [mongodump]: http://docs.mongodb.org/manual/reference/mongodump/
 [MarkLogic Setup Screen Cast]: http://www.youtube.com/watch?feature=player_embedded&v=n4Oem-DsQaU
