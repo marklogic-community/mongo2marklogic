@@ -100,7 +100,7 @@ To see a single tweet,
 To find a tweet based on it's Mongo `_id`, do
 
     % curl -s --anyauth --user 'user:password' \
-        'http://localhost:8003/v1/keyvalue?key=_id&value=51144AC2892B1877BF620695' | json results | json -a uri
+        'http://localhost:8003/v1/keyvalue?key=_id&value=51144AC2892B1877BF620695&format=json' | json results | json -a uri
 
 To find all the tweets that have the word `niners` OR `ravens` in them, do
 
