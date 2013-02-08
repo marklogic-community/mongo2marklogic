@@ -18,7 +18,7 @@ loaded into mongo named `sample.json` in the .zip file).
 # Install and Set up MarkLogic
 
 1. [Download MarkLogic][], browse to the [Admin interface on port 8001](http://localhost:8001), and 
-   request a free license. After that, create a database named `Import-DB` 
+   request a [free license][]. After that, create a database named `Import-DB` 
    and set up a REST API instance on it using port `8003`.
    You can use a different database name and port, but this example uses these values. The 
    [MarkLogic Setup Screen Cast][] will help you through these steps if you get stuck.
@@ -119,6 +119,4 @@ You may want to read [Working with JSON in MarkLogic][] or [learn about the Mark
 [XCC Sessions]: http://docs.marklogic.com/guide/xcc/concepts#id_15580
 [learn about the MarkLogic REST API]: http://developer.marklogic.com/learn/rest
 [Working with JSON in MarkLogic]: http://docs.marklogic.com/guide/app-dev/json
-[BSON]: http://bsonspec.org/
-[Example]: https://github.com/marklogic/mongo2marklogic/wiki/Example
 [sample]: https://github.com/marklogic/mongo2marklogic/tree/master/sample
