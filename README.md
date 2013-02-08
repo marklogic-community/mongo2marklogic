@@ -6,7 +6,7 @@ mongo2marklogic is a Java-based tool for importing data from MongoDB into MarkLo
 
 It reads JSON data from MongoDB's [mongodump][] tool and loads data into MarkLogic using a [MarkLogic XDBC Server][].
 
-If you are new to MarkLogic, please see this [Example][].
+Here is a concrete [Example][].
 
 # Build 
 
@@ -54,8 +54,8 @@ This creates a file called `mongo2marklogic.jar`.
           "bson" - use a conversion designed to fully maintain Mongo's BSON semantics.
                     (Details TBD).
    
-Documents are created named `<root><random #>.xml`
-      
+Documents are created named `<root><random #>.xml` or `<root?<random #>.json`
+       
 # Usage
 
 To import a collection generated from mongodump and store to a MarkLogic server run:    
@@ -64,7 +64,7 @@ To import a collection generated from mongodump and store to a MarkLogic server 
          [-root root] [-collection collection] \
          [-threads n] [-batch n] [-writer json|bson]
    
-To import a collection generated from mongodump and store to a local filesystem directory:
+To read a collection generated from mongodump, convert to MarkLogic format, and store to a local filesystem directory:
 
     % java -jar mongo2marklogic.jar [-input file] -directory dir [-writer json|bson]
 
