@@ -42,6 +42,7 @@ This creates a file called `mongo2marklogic.jar`.
           Specifies an xcc or xccs connection to your MarkLogic XDBC server.  
           (See http://docs.marklogic.com/guide/xcc/concepts#id_15580 for details.)
           Default: xcc://localhost:9003
+          Example: xcc://admin:admin@localhost:9003
    
     -directory dir
           Specifies documents are to be written to a local filesystem directory "dir" instead of storing in a
