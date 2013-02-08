@@ -151,7 +151,7 @@ public class XCCImporter extends Importer {
 	
 	void run(String[] args) throws XccConfigException, Exception {
 
-		mRoot = XCCImporter.getArg(args, "root", null);
+		mRoot = XCCImporter.getArg(args, "root", "");
 
 
 		mCollection = XCCImporter.getArg(args, "collection", null);
