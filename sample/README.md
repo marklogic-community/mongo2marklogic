@@ -18,17 +18,17 @@ loaded into mongo named `sample.json` in the .zip file).
 # Install and Set up MarkLogic
 
 1. [Download MarkLogic][], browse to the [Admin interface on port 8001](http://localhost:8001), and 
-   request a [free license][]. After that, create a database named `Import-DB` 
+   request a [free license][]. After that, create a database named `Tweets-DB` 
    and set up a REST API instance on it using port `8003`.
    You can use a different database name and port, but this example uses these values. The 
    [MarkLogic Setup Screen Cast][] will help you through these steps if you get stuck.
 2. Use the [Admin interface on port 8001](http://localhost:8001) to create a MarkLogic XDBC Server with the 
    following details:
 
-        Server Name: Import-XDBC
+        Server Name: Tweets-XDBC
         Root: /
         Port: 9003
-        Database: Import-DB 
+        Database: Tweets-DB 
     
     Use the defaults for everything else. You can use a different server name or port or use another database 
     if you choose. This example uses port 9003 and assumes you are starting with an empty database. 
@@ -56,8 +56,7 @@ it into a collection named `twitter` :
     % java -Xmx1024m  -jar mongo2marklogic.jar \
          -input sample/twitter.bson \
          -connection xcc://username:password@localhost:9003 \
-         -root / \
-         -collection twitter
+         -root / -collection twitter
     
 # Search your data
 
@@ -74,8 +73,8 @@ This returns a large chunk of JSON. You can use the command line [json tool][] t
 
     % curl -s --anyauth --user 'user:password' 'http://localhost:8003/v1/search?q=&format=json' | json total
 
-And you'll see there were 10,000 tweets in the collection.   To do a simple fulltext search across 
-the entire database and see the unique MarkLogic URIs (keys) for the first 10 tweets:
+And you'll see there were 10,000 tweets in the collection. To do a simple fulltext search across 
+the entire database and see the MarkLogic URIs (unique keys) for the first 10 tweets:
 
     % curl -s --anyauth --user 'user:password' 'http://localhost:8003/v1/search?q=&format=json' | \
        json results | json -a uri
@@ -110,7 +109,7 @@ To find all the tweets that have the word `niners` OR `ravens` in them, do
 
 # Next Steps
 
-To learn more about how MarkLogic stores JSON and the kinds of things you can do, 
+To learn more about how MarkLogic stores JSON and the kinds of things you can do with it, 
 see [Working with JSON in MarkLogic][]. To get a more thorough introduction to the MarkLogic REST API
 see this [tutorial][learn about the MarkLogic REST API].
 
