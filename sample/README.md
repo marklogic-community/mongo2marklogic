@@ -1,6 +1,6 @@
 ![mongo2marklogic](http://developer.marklogic.com/media/mongo2marklogic.png)
 
-# Getting your data out of Mongo 
+# Get your data out of Mongo 
 
 Use the [mongodump][] tool to get you data out of MongoDB.  To dump all your databases and collections 
 from Mongo, do:
@@ -44,7 +44,7 @@ https://github.com/marklogic/mongo2marklogic and run
 
 This creates a file called `mongo2marklogic.jar`.   
 
-# Importing into MarkLogic
+# Import your data into MarkLogic
 
 You will need a username and password to connect to MarkLogic. (You can use the admin user account if you 
 have not yet created any other).  To import the sample `twitter.bson` dump into MarkLogic and place 
@@ -59,7 +59,7 @@ it into a collection named `twitter` :
          -root / \
          -collection twitter
     
-# Searching your data
+# Search your data
 
 First, you'll find it handy to configure the REST API to send back JSON errors 
 
