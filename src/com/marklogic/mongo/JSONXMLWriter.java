@@ -74,7 +74,7 @@ public class JSONXMLWriter extends XMLWriter
     @Override
     public void writeDocumentRoot(BSONInputStream bos) throws XMLStreamException, IOException, BSONException
     {
-        writeDocumentNS("object", AttributeNames.document, bos);
+        writeDocumentNS("json", AttributeNames.document, bos);
         
     }
     
