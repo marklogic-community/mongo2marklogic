@@ -17,19 +17,19 @@ loaded into mongo named `sample.json` in the .zip file).
 
 # Install and Set up MarkLogic
 
-1. [Download MarkLogic][], browse to the [admin interface on port 8001](http://localhost:8001), and 
+1. [Download MarkLogic][], browse to the [Admin interface on port 8001](http://localhost:8001), and 
    request a free license. After that, create a database named `Import-DB` 
    and set up a REST API instance on it using port `8003`.
    You can use a different database name and port, but this example uses these values. The 
-   [MarkLogic Setup Screen Cast][] will help you through these steps, if you get stuck.
-2. Use the Admin UI on port 8001 to create a MarkLogic XDBC Server with the following details:
+   [MarkLogic Setup Screen Cast][] will help you through these steps if you get stuck.
+2. Use the [Admin interface on port 8001](http://localhost:8001) to create a MarkLogic XDBC Server with the following details:
 
         Server Name: Import-XDBC
         Root: /
         Port: 9003
         Database: Import-DB 
     
-    Use the defaults for everything else. You can use a different server name or port or another database 
+    Use the defaults for everything else. You can use a different server name or port or use another database 
     if you choose. This example uses port 9003 and assumes you are starting with an empty database. 
     For more details, please see section in the Administrator's Guide on [Creating XDBC Servers][MarkLogic XDBC Server].
 
@@ -56,14 +56,52 @@ You will need a username and password to connect to MarkLogic. (You can use the 
     
 # Searching your data
 
-You can get a count of the documents in your database via the REST API like
+First, you'll find it handy to configure the REST API to send back JSON errors 
 
-    curl --anyauth --username 'user:password' 'http://localhost:8003/v1/search?q=&format=json' \
-        blah blah...
+    % curl -X PUT --anyauth --user 'user:password' \
+        'http://localhost:8003/v1/config/properties/error-format?format=json' -d'{"error-format": "json"}'
 
-To do a simple fulltext search across the entire documents, you can do
+Then, you can get a count of the documents in your database via the REST API like
 
-    curl --anyauth --usernae 'user:password' 'blah....'
+    % curl -s --anyauth --user 'user:password' 'http://localhost:8003/v1/search?q=&format=json'
+
+This returns a large chunk of JSON. You can use the command line [json tool][] to grab out the total as
+
+    % curl -s --anyauth --user 'user:password' 'http://localhost:8003/v1/search?q=&format=json' | json total
+    
+    10000
+
+To do a simple fulltext search across the entire documents and see the unique URIs (keys) for the first 10 results:
+
+    % curl -s --anyauth --user 'user:password' 'http://localhost:8003/v1/search?q=&format=json' | json results | json -a uri
+
+You will get something like:
+
+    /9BF8E4474C9F12ECC582653D.json
+    /01B1955B565482E590BA7D6C.json
+    /EA5EE08E32CD676E52DE55A8.json
+    /7059E9FBDDE131E550601B50.json
+    /BDE73B671A1BDB17439D2F12.json
+    /EF9A667F6587223CFB4696C5.json
+    /9D4CB37E1A6E431B0A73C06E.json
+    /274586CF3C8108A8372021BB.json
+    /7C46DEC3597CD99B1CFA294B.json
+    /4F194E4C65E72B0E99C89375.json
+
+To see a single document, 
+
+    % curl -s --anyauth --user 'user:password' \
+        'http://localhost:8003/v1/documents?uri=/4F194E4C65E72B0E99C89375.json&format=json' | json
+
+To find a document URI based on it's Mongo `_id`, do
+
+    % curl -s --anyauth --user 'user:password' \
+        'http://localhost:8003/v1/keyvalue?key=_id&value=51144AC2892B1877BF620695' | json results | json -a uri
+
+To find all the documents that have the word `niners` OR `ravens` in them, do
+
+    % curl -s --anyauth --user 'user:password' 'http://localhost:8003/v1/search?q=niners%20OR%20ravens&format=json' | json results
+
 
 # Next Steps
 
