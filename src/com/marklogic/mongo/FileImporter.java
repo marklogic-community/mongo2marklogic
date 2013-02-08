@@ -52,6 +52,7 @@ import com.marklogic.xcc.exceptions.XccConfigException;
 public class FileImporter extends Importer {
     
     private String outdir;
+    private XMLWriter mWriter;
     
 	void run(String[] args) throws XccConfigException, Exception {
 
@@ -65,22 +66,18 @@ public class FileImporter extends Importer {
 
 		BSONInputStream bos = new BSONInputStream(is);
 
-        long tm_start = System.currentTimeMillis();
 		
 		int files = 0;
 		while (is.available() > 0) {
 			
-			XMLWriter bxw = getWriter(args);
-			bxw.writeDocumentRoot(bos);
+			mWriter = getWriter(args);
+			mWriter.writeDocumentRoot(bos);
 			
-			put(  bxw.close() );
+			put(  mWriter.close() );
 
 			files++;
 		}
 		
-		long tm_stop = System.currentTimeMillis();
-        long ms = tm_stop - tm_start ; 
-        
         Importer.completed(files);
         
 		
@@ -98,7 +95,7 @@ public class FileImporter extends Importer {
 	}
 	
 	private String getUri() {
-		return outdir + "/" + getRandom() + ".xml";
+		return outdir + "/" + getRandom() + mWriter.getSuffix();
 	}
 	
 	}
