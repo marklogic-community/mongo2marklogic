@@ -68,7 +68,9 @@ Then, you can get a count of the documents in your database via the REST API lik
 This returns a large chunk of JSON. You can use the command line [json tool][] to grab out the total as
 
     % curl -s --anyauth --user 'user:password' 'http://localhost:8003/v1/search?q=&format=json' | json total
-    
+
+And you'll see 10,000 results
+
     10000
 
 To do a simple fulltext search across the entire documents and see the unique URIs (keys) for the first 10 results:
@@ -101,7 +103,6 @@ To find a document URI based on it's Mongo `_id`, do
 To find all the documents that have the word `niners` OR `ravens` in them, do
 
     % curl -s --anyauth --user 'user:password' 'http://localhost:8003/v1/search?q=niners%20OR%20ravens&format=json' | json results
-
 
 # Next Steps
 
