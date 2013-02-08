@@ -65,17 +65,15 @@ Then, you can get a count of the documents in your database via the REST API lik
 
     % curl -s --anyauth --user 'user:password' 'http://localhost:8003/v1/search?q=&format=json'
 
-This returns a large chunk of JSON. You can use the command line [json tool][] to grab out the total as
+This returns a large chunk of JSON. You can use the command line [json tool][] to grab the total as
 
     % curl -s --anyauth --user 'user:password' 'http://localhost:8003/v1/search?q=&format=json' | json total
 
-And you'll see 10,000 results
+And you'll see there were 10,000 tweets in the collection.   To do a simple fulltext search across 
+the entire database and see the unique MarkLogic URIs (keys) for the first 10 tweets:
 
-    10000
-
-To do a simple fulltext search across the entire documents and see the unique URIs (keys) for the first 10 results:
-
-    % curl -s --anyauth --user 'user:password' 'http://localhost:8003/v1/search?q=&format=json' | json results | json -a uri
+    % curl -s --anyauth --user 'user:password' 'http://localhost:8003/v1/search?q=&format=json' | \
+       json results | json -a uri
 
 You will get something like:
 
@@ -90,17 +88,17 @@ You will get something like:
     /7C46DEC3597CD99B1CFA294B.json
     /4F194E4C65E72B0E99C89375.json
 
-To see a single document, 
+To see a single tweet, 
 
     % curl -s --anyauth --user 'user:password' \
         'http://localhost:8003/v1/documents?uri=/4F194E4C65E72B0E99C89375.json&format=json' | json
 
-To find a document URI based on it's Mongo `_id`, do
+To find a tweet based on it's Mongo `_id`, do
 
     % curl -s --anyauth --user 'user:password' \
         'http://localhost:8003/v1/keyvalue?key=_id&value=51144AC2892B1877BF620695' | json results | json -a uri
 
-To find all the documents that have the word `niners` OR `ravens` in them, do
+To find all the tweets that have the word `niners` OR `ravens` in them, do
 
     % curl -s --anyauth --user 'user:password' 'http://localhost:8003/v1/search?q=niners%20OR%20ravens&format=json' | json results
 
@@ -121,3 +119,4 @@ You may want to read [Working with JSON in MarkLogic][] or [learn about the Mark
 [learn about the MarkLogic REST API]: http://developer.marklogic.com/learn/rest
 [Working with JSON in MarkLogic]: http://docs.marklogic.com/guide/app-dev/json
 [sample]: https://github.com/marklogic/mongo2marklogic/tree/master/sample
+[json tool]: https://github.com/trentm/json
