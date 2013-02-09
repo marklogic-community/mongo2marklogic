@@ -65,7 +65,7 @@ First, you'll find it handy to configure the REST API to send back JSON errors
     % curl -X PUT --anyauth --user 'user:password' \
         'http://localhost:8003/v1/config/properties/error-format?format=json' -d'{"error-format": "json"}'
 
-Then, you can get a count of the documents in your database via the REST API like
+Then, you can get a count of the documents in your database via the `search` end-point: 
 
     % curl -s --anyauth --user 'user:password' 'http://localhost:8003/v1/search?q=&format=json'
 
@@ -93,12 +93,12 @@ You will get a response with URIs like:
     /4F194E4C65E72B0E99C89375.json
 
 because mongo2marklogic assigns URIs to documents using a random string. 
-To find a single tweet, you can look it up by its URI, 
+To find a single tweet, you can look it up by its URI:
 
     % curl -s --anyauth --user 'user:password' \
         'http://localhost:8003/v1/documents?uri=/4F194E4C65E72B0E99C89375.json&format=json' | json
 
-To find a tweet based on it's Mongo `_id`, you can use the `keyvalue` end point as:
+To find a tweet based on its Mongo `_id`, you can use the `keyvalue` end-point as:
 
     % curl -s --anyauth --user 'user:password' \
         'http://localhost:8003/v1/keyvalue?key=_id&value=51144AC2892B1877BF620695&format=json' | json results | json -a uri
@@ -114,7 +114,8 @@ google-style searches.  For example, to find all the tweets that have the word
 
 To learn more about how MarkLogic stores JSON and the kinds of things you can do with it, 
 see [Working with JSON in MarkLogic][]. To get a more thorough introduction to the MarkLogic REST API
-see this [tutorial][learn about the MarkLogic REST API].
+see this [tutorial][learn about the MarkLogic REST API].  And if you'd like to know more about MarkLogic architecture
+see this [article][arch-101].
 
 [MarkLogic]: http://developer.marklogic.com    
 [LICENSE.txt]: https://github.com/marklogic/mongo2marklogic/blog/master/LICENSE.txt
@@ -130,3 +131,4 @@ see this [tutorial][learn about the MarkLogic REST API].
 [Working with JSON in MarkLogic]: http://docs.marklogic.com/guide/app-dev/json
 [sample]: https://github.com/marklogic/mongo2marklogic/tree/master/sample
 [json tool]: https://github.com/trentm/json
+[arch-101]: http://developer.marklogic.com/learn/arch/diagram-101
