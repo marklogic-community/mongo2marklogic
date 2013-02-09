@@ -79,7 +79,7 @@ the entire database and see the MarkLogic URIs (unique keys) for the first 10 tw
     % curl -s --anyauth --user 'user:password' 'http://localhost:8003/v1/search?q=&format=json' | \
        json results | json -a uri
 
-You will get something like:
+You will get something some URIs like:
 
     /9BF8E4474C9F12ECC582653D.json
     /01B1955B565482E590BA7D6C.json
@@ -92,17 +92,20 @@ You will get something like:
     /7C46DEC3597CD99B1CFA294B.json
     /4F194E4C65E72B0E99C89375.json
 
-To see a single tweet, 
+because mongo2marklogic assigns URIs to documents using a random string. 
+To find a single tweet, you can look it up by its URI, 
 
     % curl -s --anyauth --user 'user:password' \
         'http://localhost:8003/v1/documents?uri=/4F194E4C65E72B0E99C89375.json&format=json' | json
 
-To find a tweet based on it's Mongo `_id`, do
+To find a tweet based on it's Mongo `_id`, you can use the `keyvalue` end point as:
 
     % curl -s --anyauth --user 'user:password' \
         'http://localhost:8003/v1/keyvalue?key=_id&value=51144AC2892B1877BF620695&format=json' | json results | json -a uri
 
-To find all the tweets that have the word `niners` OR `ravens` in them, do
+The REST API's `search` endpoint is quite powerful and flexible, yet it has a simple API for doing 
+google-style searches.  For example, to find all the tweets that have the word 
+`niners` OR `ravens` (case insensitive) in them, you can do
 
     % curl -s --anyauth --user 'user:password' 'http://localhost:8003/v1/search?q=niners%20OR%20ravens&format=json' |\
          json results
