@@ -79,7 +79,7 @@ the entire database and see the MarkLogic URIs (unique keys) for the first 10 tw
     % curl -s --anyauth --user 'user:password' 'http://localhost:8003/v1/search?q=&format=json' | \
        json results | json -a uri
 
-You will get something some URIs like:
+You will get a response with URIs like:
 
     /9BF8E4474C9F12ECC582653D.json
     /01B1955B565482E590BA7D6C.json
