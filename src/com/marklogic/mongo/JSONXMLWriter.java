@@ -21,7 +21,6 @@ import java.io.IOException;
 import javax.xml.stream.XMLStreamException;
 
 import com.marklogic.mongo.BSON.AttributeNames;
-import com.marklogic.mongo.BSON.ElementNamesBS;
 
 
 public class JSONXMLWriter extends XMLWriter

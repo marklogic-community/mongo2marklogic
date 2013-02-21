@@ -17,10 +17,8 @@
 
 package com.marklogic.mongo;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 
 import com.marklogic.mongo.BSON.AttributeNames;

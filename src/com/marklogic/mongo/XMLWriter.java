@@ -25,7 +25,6 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 
 import com.marklogic.mongo.BSON.AttributeNames;
-import com.marklogic.mongo.BSON.ElementNamesBS;
 
 public abstract class XMLWriter
 {
@@ -34,8 +33,8 @@ public abstract class XMLWriter
     protected ByteArrayOutputStream bos;
     protected XMLStreamWriter writer;
     protected boolean bHasElement = false;
-    
-    
+    private String mId = null ;  // value of the _id element if present
+
 
     XMLWriter() throws XMLStreamException
     {
@@ -421,8 +420,14 @@ public abstract class XMLWriter
     	startElement(name,type);
     	byte[] data = new byte[12];
     	docStream.read(data);
-    	value( BSON.toHex( data ));
+    	String hexid = BSON.toHex( data );
+    	value( hexid );
     	endElement();
+    	
+    	if( name.equals("_id"))
+    	    mId = hexid ;
+    	
+    	
     	
     }
 
@@ -445,6 +450,9 @@ public abstract class XMLWriter
     
     }
 
+    public String getId() {
+        return mId ;
+    }
 
     public abstract void writeDocumentRoot(BSONInputStream bos) throws XMLStreamException, IOException, BSONException;
 

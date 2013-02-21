@@ -28,6 +28,11 @@ public abstract class Importer
     private Random mRandom = new Random();
 
     protected static int totalFiles = 0;
+
+    protected XMLWriter mWriter;
+
+    protected boolean bUseId = false  ;
+    
     
     synchronized static void completed( int files  )
     {
@@ -119,13 +124,11 @@ public abstract class Importer
     protected static String getArg(String[] args, String name, String def)
     {
     
-    	for(int i = 0 ; i < args.length-1 ; i+=2 ){
+    	for(int i = 0 ; i < args.length-1 ; i++ ){
     		if( args[i].startsWith("-")){
     			if( args[i].substring(1).equals(name) )
     				return args[i+1];
     		}
-    			else
-    		        break;
     	}
     	return def ;
     	

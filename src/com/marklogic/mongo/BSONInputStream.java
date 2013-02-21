@@ -22,12 +22,11 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class BSONInputStream {
-	InputStream mInput;
+	private InputStream mInput;
 	
 	BSONInputStream( InputStream is )
 	{
 		mInput = is ;
-		
 	}
 	
 	/*

@@ -19,40 +19,16 @@ package com.marklogic.mongo;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.security.cert.CertificateException;
-import java.security.cert.X509Certificate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
-
-import com.marklogic.mongo.BSON.AttributeNames;
-import com.marklogic.mongo.BSON.ElementNamesBS;
-import com.marklogic.xcc.Content;
-import com.marklogic.xcc.ContentCreateOptions;
-import com.marklogic.xcc.ContentFactory;
-import com.marklogic.xcc.ContentSource;
-import com.marklogic.xcc.ContentSourceFactory;
-import com.marklogic.xcc.SecurityOptions;
-import com.marklogic.xcc.Session;
-import com.marklogic.xcc.exceptions.RequestException;
 import com.marklogic.xcc.exceptions.XccConfigException;
 
 public class FileImporter extends Importer {
     
     private String outdir;
-    private XMLWriter mWriter;
+
     
 	void run(String[] args) throws XccConfigException, Exception {
 
@@ -61,11 +37,24 @@ public class FileImporter extends Importer {
 
 		String input = getArg(args, "input", null);
 		outdir = getArg( args , "directory" , ".");
-		
+        bUseId = XCCImporter.hasArg(args , "id");
+
+        
+       
+        
 		InputStream is = new BufferedInputStream(input == null ? System.in : new FileInputStream(input));
 
 		BSONInputStream bos = new BSONInputStream(is);
 
+		
+		File f = new File( outdir );
+		if( f.exists() && ! f.isDirectory() )
+		    throw new Exception("Output is not a directory: " + f.getAbsolutePath() );
+		
+		if( ! f.exists() ){
+		    System.out.println("Creating output directory: " + f.getAbsolutePath());
+		    f.mkdirs();
+	    }		
 		
 		int files = 0;
 		while (is.available() > 0) {
@@ -95,7 +84,7 @@ public class FileImporter extends Importer {
 	}
 	
 	private String getUri() {
-		return outdir + "/" + getRandom() + mWriter.getSuffix();
+		return outdir + "/" + ( bUseId ? mWriter.getId() : getRandom()) + mWriter.getSuffix();
 	}
 	
 	}

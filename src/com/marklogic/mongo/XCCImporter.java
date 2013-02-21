@@ -18,11 +18,8 @@ package com.marklogic.mongo;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
@@ -34,10 +31,7 @@ import java.util.concurrent.TimeUnit;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
-import javax.xml.stream.XMLStreamException;
 
-import com.marklogic.mongo.BSON.AttributeNames;
-import com.marklogic.mongo.BSON.ElementNamesBS;
 import com.marklogic.xcc.Content;
 import com.marklogic.xcc.ContentCreateOptions;
 import com.marklogic.xcc.ContentFactory;
@@ -56,8 +50,7 @@ public class XCCImporter extends Importer {
 	private DocumentBatch mBatch;
 	private ThreadPoolExecutor mPool = null;
 	protected	ContentSource	mContentSource = null ;
-    private XMLWriter mWriter;
-	
+
 	
 	
 
@@ -153,7 +146,7 @@ public class XCCImporter extends Importer {
 	void run(String[] args) throws XccConfigException, Exception {
 
 		mRoot = XCCImporter.getArg(args, "root", "");
-
+        bUseId = XCCImporter.hasArg(args , "id");
 
 		mCollection = XCCImporter.getArg(args, "collection", null);
 		
@@ -220,7 +213,7 @@ public class XCCImporter extends Importer {
 
 	}
 	private String getUri() {
-		return mRoot + getRandom() +mWriter.getSuffix();
+		return mRoot + ( bUseId ? mWriter.getId() : getRandom()) +mWriter.getSuffix();
 	}
 	
 	private static void usage() {
