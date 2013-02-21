@@ -54,9 +54,15 @@ This creates a file called `mongo2marklogic.jar`.
                     (See http://docs.marklogic.com/guide/app-dev/json for details.)
           "bson" - use a conversion designed to fully maintain Mongo's BSON semantics.
                     (Details TBD).
+    -id
+          Indicates to use the _id member of the top level Mongo object to create the generated document
+          name instead of using a random number.
    
-Documents are created named `<root><random #>.xml` or `<root?<random #>.json`
-       
+Documents are created named `<root><random #>.xml` or `<root><random #>.json` unless the -id argument is present.
+If the -id arguemnt is present then Documents are named `<root><_id>.xml` or `<root><_id>.json`
+
+
+
 # Usage
 
 To import a collection generated from mongodump and store to a MarkLogic server run:    
