@@ -1,8 +1,8 @@
 <a href="http://developer.marklogic.com/labs/mongo2marklogic"><img src="http://developer.marklogic.com/media/mongo2marklogic.png" alt="mongo2marklogic" title="mongo2marklogic"/></a>
 
-# mongo2marklogic 
+# MarkLogic Converter for MongoDB<sup>®</sup> 
 
-mongo2marklogic is a Java-based tool for transfering data from MongoDB into MarkLogic's [Enterprise NoSQL][] database. 
+The converter is a Java-based tool for transfering data from MongoDB into MarkLogic's [Enterprise NoSQL][] database. 
 
 It reads JSON data from MongoDB's [mongodump][] tool and loads data into MarkLogic using a [MarkLogic XDBC Server][].
 
@@ -10,7 +10,7 @@ Here is a concrete [Example][].
 
 # Build 
 
-To build mongo2marklogic, pull down the code from https://github.com/marklogic/mongo2marklogic and run
+To build the converter, pull down the code from https://github.com/marklogic/mongo2marklogic and run
 
     % ant jar
 
@@ -77,7 +77,7 @@ To read a collection generated from mongodump, convert to MarkLogic format, and 
 
 # License
  
-mongo2marklogic is licensed under the Apache License, Version 2.0 (see [LICENSE.txt][]).
+The converter is licensed under the Apache License, Version 2.0 (see [LICENSE.txt][]).
 
 [MarkLogic]: http://developer.marklogic.com    
 [LICENSE.txt]: https://github.com/marklogic/mongo2marklogic/blog/master/LICENSE.txt
