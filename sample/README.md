@@ -35,9 +35,9 @@ loaded into mongo named `sample.json` in the .zip file).
     For more details, see the section in the MarkLogic Administrator's Guide on 
     [Creating XDBC Servers][MarkLogic XDBC Server].
 
-# Build mongo2marklogic
+# Build the mongo2marklogic jar
 
-If you haven't yet, you must build mongo2marklogic. Pull down the code from 
+If you haven't yet, you must build the mongo2marklogic jar. Pull down the code from 
 https://github.com/marklogic/mongo2marklogic and run
 
     % ant jar
@@ -92,7 +92,7 @@ You will get a response with URIs like:
     /7C46DEC3597CD99B1CFA294B.json
     /4F194E4C65E72B0E99C89375.json
 
-because mongo2marklogic assigns URIs to documents using a random string. 
+because the converter assigns URIs to documents using a random string. 
 To find a single tweet, you can look it up by its URI:
 
     % curl -s --anyauth --user 'user:password' \
