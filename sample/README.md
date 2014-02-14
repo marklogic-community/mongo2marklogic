@@ -117,7 +117,6 @@ see [Working with JSON in MarkLogic][]. To get a more thorough introduction to t
 see this [tutorial][learn about the MarkLogic REST API].  And if you'd like to know more about MarkLogic architecture
 see this [article][arch-101].
 
-
 [MarkLogic]: http://developer.marklogic.com    
 [LICENSE.txt]: https://github.com/marklogic/mongo2marklogic/blog/master/LICENSE.txt
 [Enterprise NoSQL]: http://developer.marklogic.com/products/marklogic-server/enterprise-nosql
